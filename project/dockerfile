@@ -1,0 +1,22 @@
+# Use uma versão específica do Python
+FROM tensorflow/tensorflow
+
+# Definir o diretório de trabalho
+WORKDIR /opt/app
+
+# Copiar o arquivo de dependências
+COPY requirements.txt .
+
+# Atualizar pip e instalar dependências
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir --ignore-installed blinker && \
+    pip install --no-cache-dir -r requirements.txt
+
+# Copiar o código da aplicação
+COPY . .
+
+# Expor a porta para o Flask
+EXPOSE 5000
+
+# Comando para iniciar a aplicação
+CMD ["python", "app/main.py"]

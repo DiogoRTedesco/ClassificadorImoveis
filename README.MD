@@ -16,3 +16,7 @@
 
 # Executar API
     * python app/main.py
+
+# Com docker-compose 
+    - docker-compose up --build (primeira vez)
+    - docker-compose up
